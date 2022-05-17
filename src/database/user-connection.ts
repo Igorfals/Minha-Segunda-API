@@ -1,4 +1,4 @@
-import { connection as knex } from "./conection/knex";
+import { connection as knex } from "./conection/knex"
 
 export class UserConnection{
     getUser() {
@@ -12,5 +12,8 @@ export class UserConnection{
     }
     login(email: string){
         return knex.from('users').where('email', email).andWhere('status',1).first()
+    }
+    deleteUser(id: number) {
+        return knex.from('users').where('id_user', id).del()
     }
 }
